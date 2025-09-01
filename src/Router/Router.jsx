@@ -8,6 +8,7 @@ import ForgetPassword from "@/Pages/Authpages/ForgetPassword";
 import ChangePassword from "@/Pages/Authpages/ChangePassword";
 import OtpVerification from "@/Pages/Authpages/OtpVerification";
 import YouVerified from "@/Pages/Authpages/YouVerified";
+import AllPages from "@/Pages/AllPages";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
         </Link>
       </div>
     ),
+  },
+  {
+    path:"/all-pages",
+    element:<AllPages/>
   },
   {
     path: "/",

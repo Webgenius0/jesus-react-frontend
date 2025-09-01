@@ -1,21 +1,14 @@
 import { AllImages } from "@/Components/Allimages/AllImages";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/Components/ui/input-otp";
 import React from "react";
 import { useForm } from "react-hook-form";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from "@/components/ui/input-otp";
+
 
 export default function OtpVerification() {
   const {
-    register,
     handleSubmit,
-    formState: { errors },
-    watch,
   } = useForm();
 
-  const selectedRole = watch("role");
 
   const onSubmit = (data) => {
     console.log("Selected Role:", data.role);
