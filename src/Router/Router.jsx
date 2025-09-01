@@ -6,7 +6,7 @@ import Login from "@/Pages/Authpages/Login";
 import SelectYourRole from "@/Pages/Authpages/SelectYourRole";
 import ForgetPassword from "@/Pages/Authpages/ForgetPassword";
 import ChangePassword from "@/Pages/Authpages/ChangePassword";
-import OtpVerification from "@/Pages/Authpages/OTPverification";
+import OtpVerification from "@/Pages/Authpages/OtpVerification";
 import YouVerified from "@/Pages/Authpages/YouVerified";
 
 export const router = createBrowserRouter([
