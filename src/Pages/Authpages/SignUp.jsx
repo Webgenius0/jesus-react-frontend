@@ -1,0 +1,209 @@
+import { AllImages } from "@/Components/Allimages/AllImages";
+import { Separator } from "@/Components/ui/separator";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { CiUser } from "react-icons/ci";
+import { CiMail } from "react-icons/ci";
+import { PiEyeThin } from "react-icons/pi";
+import { PiEyeSlashThin } from "react-icons/pi";
+import { FaGoogle } from "react-icons/fa";
+import { SiApple } from "react-icons/si";
+import { Link } from "react-router-dom";
+
+export default function SignUp() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const onSubmit = (data) => console.log(data);
+
+  return (
+    <main className="bg-PrimaryBg min-h-screen relative z-1 after:absolute after:top-0 after:left-0 after:w-full after:h-[50vh] after:bg-white after:-z-1 py-[30px]">
+      <div className="max-w-[719px] mx-auto">
+        <div className="flex flex-col justify-center items-center">
+          <img src={AllImages.Logo} className="w-[280px] h-[88px]" alt="" />
+          <h1 className="text-3xl font-semibold my-3">Sign Up</h1>
+          <p className="text-2xl font-light text-center mb-6">
+            Join The Taco Spot fam. Big flavor, big dreams, no shortcuts — just
+            tacos and hustle. 🚀🌮
+          </p>
+        </div>
+
+        <div className="py-12 px-16 bg-PrimaryBg flex flex-col justify-center items-center  rounded-[48px] fromBox-shadow ">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+            <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-4">
+              <div className="grid">
+                <label className="text-base font-semibold mb-1 text-white">
+                  First Name*
+                </label>
+
+                <div className="relative w-full">
+                  <input
+                    type="text"
+                    placeholder="Enter your first name"
+                    className="bg-white p-4 rounded-[12px] outline-0 w-full ps-12"
+                    {...register("firstName", { required: true })}
+                  />
+                  <h1 className="absolute left-4 top-4 text-PrimaryText">
+                    <CiUser size={24} />
+                  </h1>
+                </div>
+
+                {errors.firstName && (
+                  <span className="mt-1">This field is required</span>
+                )}
+              </div>
+
+              <div className="grid">
+                <label className="text-base font-semibold mb-1 text-white">
+                  Last Name*
+                </label>
+                <div className="relative w-full">
+                  <input
+                    type="text"
+                    placeholder="Enter your last name"
+                    className="bg-white p-4 rounded-[12px] outline-0 w-full ps-12"
+                    {...register("lastName", { required: true })}
+                  />
+                  <h1 className="absolute left-4 top-4 text-PrimaryText">
+                    <CiUser size={24} />
+                  </h1>
+                </div>
+                {errors.lastName && (
+                  <span className="mt-1">This field is required</span>
+                )}
+              </div>
+            </div>
+
+            {/* - */}
+            <div className="grid">
+              <label className="text-base font-semibold mb-1 text-white">
+                Email Address*
+              </label>
+              <div className="relative w-full">
+                <input
+                  type="email"
+                  placeholder="Enter your email address"
+                  className="bg-white p-4 rounded-[12px] outline-0 w-full ps-12"
+                  {...register("emailAddress", { required: true })}
+                />
+                <div className="absolute left-4 top-4.5 text-PrimaryText">
+                  <CiMail size={22} />
+                </div>
+              </div>
+              {errors.emailAddress && (
+                <span className="mt-1">This field is required</span>
+              )}
+            </div>
+
+            {/* - */}
+            <div className="grid">
+              <label className="text-base font-semibold mb-1 text-white">
+                Password*
+              </label>
+              <div className="relative w-full">
+                <input
+                  placeholder="*********"
+                  type={showPassword ? "text" : "password"}
+                  className="bg-white p-4 rounded-[12px] outline-0 w-full"
+                  {...register("password", { required: true })}
+                />
+                {
+                  <div className="absolute right-4 top-4.5 text-PrimaryText cursor-pointer">
+                    {!showPassword ? (
+                      <PiEyeSlashThin
+                        size={22}
+                        onClick={() => setShowPassword(!showPassword)}
+                      />
+                    ) : (
+                      <PiEyeThin
+                        size={22}
+                        onClick={() => setShowPassword(!showPassword)}
+                      />
+                    )}
+                  </div>
+                }
+              </div>
+              {errors.password && (
+                <span className="mt-1">This field is required</span>
+              )}
+            </div>
+
+            {/* - */}
+            <div className="grid">
+              <label className="text-base font-semibold mb-1 text-white">
+                Confirm Password*
+              </label>
+
+              <div className="relative w-full">
+                <input
+                  placeholder="*********"
+                  type={showConfirmPassword ? "text" : "password"}
+                  className="bg-white p-4 rounded-[12px] outline-0 w-full"
+                  {...register("confirmPassword", { required: true })}
+                />
+                {
+                  <div className="absolute right-4 top-4.5 text-PrimaryText cursor-pointer">
+                    {!showConfirmPassword ? (
+                      <PiEyeSlashThin
+                        size={22}
+                        onClick={() =>
+                          setShowConfirmPassword(!showConfirmPassword)
+                        }
+                      />
+                    ) : (
+                      <PiEyeThin
+                        size={22}
+                        onClick={() =>
+                          setShowConfirmPassword(!showConfirmPassword)
+                        }
+                      />
+                    )}
+                  </div>
+                }
+              </div>
+              {errors.confirmPassword && (
+                <span className="mt-1">This field is required</span>
+              )}
+            </div>
+
+            <div className="flex justify-center my-6">
+              <button
+                type="submit"
+                className="bg-white py-4 px-8  rounded-xl text-center w-fit cursor-pointer hover:bg-gray-100 duration-300"
+              >
+                Sign Up
+              </button>
+            </div>
+          </form>
+
+          <div className="relative  flex items-center justify-center overflow-hidden w-full">
+            <Separator />
+            <div className="px-2 text-center text-white text-base">OR</div>
+            <Separator />
+          </div>
+
+          <div className="text-white">Create account with</div>
+
+          <div className="grid md:grid-cols-2 gap-4 mt-2">
+            <button className="bg-white py-3 px-12  rounded-xl text-center w-fit cursor-pointer flex justify-center items-center gap-2 text-base font-medium hover:scale-105 duration-300 ">
+              <SiApple size={24} /> Apple
+            </button>
+            <button className="bg-white py-3 px-12  rounded-xl text-center w-fit cursor-pointer flex justify-center items-center gap-2 text-base font-medium hover:scale-105 duration-300 ">
+              <FaGoogle size={24} /> Google
+            </button>
+          </div>
+
+          <div className="mt-4 text-white">
+            Already have an account? <Link to={"/login"}>LogIn</Link>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}
