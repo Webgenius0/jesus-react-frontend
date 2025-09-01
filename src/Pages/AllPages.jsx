@@ -3,12 +3,32 @@ import { Link } from "react-router-dom";
 const AllPages = () => {
   const AllPagesLinks = [
     {
-      link: "/auth/login",
-      name: "LogIn",
+      link: "/login",
+      element: "LogIn",
     },
     {
-      link: "/auth/sign-up",
-      name: "SignUp",
+      link: "/sign-up",
+      element: "SignUp",
+    },
+    {
+      link: "/select-your-role",
+      element: "Select Your Role",
+    },
+    {
+      link: "/forget-password",
+      element: "Forget Password",
+    },
+    {
+      link: "/change-password",
+      element: "Change Password",
+    },
+    {
+      link: "/otp-verification",
+      element: "otp verification",
+    },
+    {
+      link: "/verified",
+      element: "You Verified",
     },
   ];
 
@@ -23,7 +43,7 @@ const AllPages = () => {
               target="_blank"
               className="text-black duration-300"
             >
-              {item.name}
+              {item.element}
             </Link>
           </li>
         ))}
