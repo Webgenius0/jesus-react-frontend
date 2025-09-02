@@ -8,7 +8,8 @@ import { PiEyeThin } from "react-icons/pi";
 import { PiEyeSlashThin } from "react-icons/pi";
 import { FaGoogle } from "react-icons/fa";
 import { SiApple } from "react-icons/si";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function SignUp() {
   const {
@@ -19,11 +20,16 @@ export default function SignUp() {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    // console.log(data);
+    toast.success("Successfully Signed Up!");
+    navigate("/auth/otp-verification");
+  };
 
   return (
-    <main className="bg-PrimaryBg min-h-screen relative z-1 after:absolute after:top-0 after:left-0 after:w-full after:h-[50vh] after:bg-white after:-z-1 py-[30px]">
+    <main className="bg-PrimaryBg min-h-screen relative z-1 after:absolute after:top-0 after:left-0 after:w-full after:h-[50vh] after:bg-white after:-z-1 py-[30px] flex flex-col justify-center items-center">
       <div className="max-w-[719px] mx-auto">
         <div className="flex flex-col justify-center items-center">
           <img src={AllImages.Logo} className="w-[280px] h-[88px]" alt="" />
@@ -46,17 +52,17 @@ export default function SignUp() {
                   <input
                     type="text"
                     placeholder="Enter your first name"
-                    className="bg-white p-4 rounded-[12px] outline-0 w-full ps-12"
+                    className={`bg-white p-4 rounded-[12px] outline-0 w-full ps-12 ${
+                      errors.firstName
+                        ? "border-2 border-yellow-500"
+                        : "border-2 border-transparent"
+                    }`}
                     {...register("firstName", { required: true })}
                   />
                   <h1 className="absolute left-4 top-4 text-PrimaryText">
                     <CiUser size={24} />
                   </h1>
                 </div>
-
-                {errors.firstName && (
-                  <span className="mt-1">This field is required</span>
-                )}
               </div>
 
               <div className="grid">
@@ -67,16 +73,17 @@ export default function SignUp() {
                   <input
                     type="text"
                     placeholder="Enter your last name"
-                    className="bg-white p-4 rounded-[12px] outline-0 w-full ps-12"
+                    className={`bg-white p-4 rounded-[12px] outline-0 w-full ps-12 ${
+                      errors.lastName
+                        ? "border-2 border-yellow-500"
+                        : "border-2 border-transparent"
+                    }`}
                     {...register("lastName", { required: true })}
                   />
                   <h1 className="absolute left-4 top-4 text-PrimaryText">
                     <CiUser size={24} />
                   </h1>
                 </div>
-                {errors.lastName && (
-                  <span className="mt-1">This field is required</span>
-                )}
               </div>
             </div>
 
@@ -89,16 +96,17 @@ export default function SignUp() {
                 <input
                   type="email"
                   placeholder="Enter your email address"
-                  className="bg-white p-4 rounded-[12px] outline-0 w-full ps-12"
+                  className={`bg-white p-4 rounded-[12px] outline-0 w-full ps-12 ${
+                    errors.emailAddress
+                      ? "border-2 border-yellow-500"
+                      : "border-2 border-transparent"
+                  }`}
                   {...register("emailAddress", { required: true })}
                 />
                 <div className="absolute left-4 top-4.5 text-PrimaryText">
                   <CiMail size={22} />
                 </div>
               </div>
-              {errors.emailAddress && (
-                <span className="mt-1">This field is required</span>
-              )}
             </div>
 
             {/* - */}
@@ -110,7 +118,11 @@ export default function SignUp() {
                 <input
                   placeholder="*********"
                   type={showPassword ? "text" : "password"}
-                  className="bg-white p-4 rounded-[12px] outline-0 w-full"
+                  className={`bg-white p-4 rounded-[12px] outline-0 w-full ${
+                    errors.password
+                      ? "border-2 border-yellow-500"
+                      : "border-2 border-transparent"
+                  }`}
                   {...register("password", { required: true })}
                 />
                 {
@@ -129,9 +141,6 @@ export default function SignUp() {
                   </div>
                 }
               </div>
-              {errors.password && (
-                <span className="mt-1">This field is required</span>
-              )}
             </div>
 
             {/* - */}
@@ -144,7 +153,11 @@ export default function SignUp() {
                 <input
                   placeholder="*********"
                   type={showConfirmPassword ? "text" : "password"}
-                  className="bg-white p-4 rounded-[12px] outline-0 w-full"
+                  className={`bg-white p-4 rounded-[12px] outline-0 w-full ${
+                    errors.confirmPassword
+                      ? "border-2 border-yellow-500"
+                      : "border-2 border-transparent"
+                  }`}
                   {...register("confirmPassword", { required: true })}
                 />
                 {
@@ -167,15 +180,12 @@ export default function SignUp() {
                   </div>
                 }
               </div>
-              {errors.confirmPassword && (
-                <span className="mt-1">This field is required</span>
-              )}
             </div>
 
             <div className="flex justify-center my-6">
               <button
                 type="submit"
-                className="bg-white py-4 px-8  rounded-xl text-center w-fit cursor-pointer hover:bg-gray-100 duration-300"
+                className="bg-white py-4 px-12 hover:scale-105 duration-300 rounded-xl text-center w-fit cursor-pointer hover:bg-gray-100 font-semibold text-PrimaryBg"
               >
                 Sign Up
               </button>
@@ -200,7 +210,7 @@ export default function SignUp() {
           </div>
 
           <div className="mt-4 text-white">
-            Already have an account? <Link to={"/login"}>LogIn</Link>
+            Already have an account? <Link to={"/auth/login"}>LogIn</Link>
           </div>
         </div>
       </div>

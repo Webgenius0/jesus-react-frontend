@@ -1,6 +1,8 @@
 import { AllImages } from "@/Components/Allimages/AllImages";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast"; // 👈 import toast
 
 export default function SelectYourRole() {
   const {
@@ -11,10 +13,18 @@ export default function SelectYourRole() {
   } = useForm();
 
   const selectedRole = watch("role");
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log("Selected Role:", data.role);
+    navigate("/auth/sign-up");
   };
+
+  useEffect(() => {
+    if (errors.role) {
+      toast.error("Please select a role");
+    }
+  }, [errors.role]);
 
   return (
     <main className="bg-PrimaryBg min-h-screen relative z-1 after:absolute after:top-0 after:left-0 after:w-full after:h-[50vh] after:bg-white after:-z-1 py-[30px]">
@@ -32,7 +42,9 @@ export default function SelectYourRole() {
             {/* Franchisee */}
             <label
               className={`flex justify-center items-center border p-4 rounded-xl cursor-pointer bg-white ${
-                selectedRole === "Franchisee" ? "border-3 border-yellow-500" : "border-3 border-transparent"
+                selectedRole === "Franchisee"
+                  ? "border-3 border-yellow-500"
+                  : "border-3 border-transparent"
               }`}
             >
               <h1>Franchisee</h1>
@@ -47,7 +59,9 @@ export default function SelectYourRole() {
             {/* General Manager */}
             <label
               className={`flex justify-center items-center border p-4 rounded-xl cursor-pointer bg-white ${
-                selectedRole === "General Manager" ? "border-3 border-yellow-500" : "border-3 border-transparent"
+                selectedRole === "General Manager"
+                  ? "border-3 border-yellow-500"
+                  : "border-3 border-transparent"
               }`}
             >
               <h1>General Manager</h1>
@@ -62,7 +76,9 @@ export default function SelectYourRole() {
             {/* Trainer */}
             <label
               className={`flex justify-center items-center border p-4 rounded-xl cursor-pointer bg-white ${
-                selectedRole === "Trainer" ? "border-3 border-yellow-500" : "border-3 border-transparent"
+                selectedRole === "Trainer"
+                  ? "border-3 border-yellow-500"
+                  : "border-3 border-transparent"
               }`}
             >
               <h1>Trainer</h1>
@@ -73,10 +89,6 @@ export default function SelectYourRole() {
                 className="hidden"
               />
             </label>
-
-            {errors.role && (
-              <p className="text-red-500 text-sm">Please select a role</p>
-            )}
 
             <div className="flex justify-center my-6">
               <button

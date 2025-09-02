@@ -134,3 +134,16 @@
 .fromBox-shadow {
 box-shadow: 0 0 36px 0 rgba(0, 0, 0, 0.16);
 }
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  display: inline;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #e50914;
+  border-radius: 3px;
+}

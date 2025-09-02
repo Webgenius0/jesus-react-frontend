@@ -2,13 +2,13 @@ import { AllImages } from "@/Components/Allimages/AllImages";
 import { Separator } from "@/Components/ui/separator";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { CiUser } from "react-icons/ci";
 import { CiMail } from "react-icons/ci";
 import { PiEyeThin } from "react-icons/pi";
 import { PiEyeSlashThin } from "react-icons/pi";
 import { FaGoogle } from "react-icons/fa";
 import { SiApple } from "react-icons/si";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function Login() {
   const {
@@ -18,12 +18,17 @@ export default function Login() {
   } = useForm();
 
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    // console.log(data);
+    toast.success("Successfully login In !");
+    navigate("/dashboard/overview");
+
+  };
 
   return (
-    <main className="bg-PrimaryBg min-h-screen relative z-1 after:absolute after:top-0 after:left-0 after:w-full after:h-[50vh] after:bg-white after:-z-1 py-[30px]">
+    <main className="bg-PrimaryBg min-h-screen relative z-1 after:absolute after:top-0 after:left-0 after:w-full after:h-[50vh] after:bg-white after:-z-1 py-[30px] flex flex-col justify-center items-center">
       <div className="max-w-[719px] mx-auto">
         <div className="flex flex-col justify-center items-center">
           <img src={AllImages.Logo} className="w-[280px] h-[88px]" alt="" />
@@ -44,16 +49,17 @@ export default function Login() {
                 <input
                   type="email"
                   placeholder="Enter your email address"
-                  className="bg-white p-4 rounded-[12px] outline-0 w-full ps-12"
+                  className={`bg-white p-4 rounded-[12px] outline-0 w-full ps-12 ${
+                    errors.emailAddress
+                      ? "border-2 border-yellow-500"
+                      : "border-2 border-transparent"
+                  }`}
                   {...register("emailAddress", { required: true })}
                 />
                 <div className="absolute left-4 top-4.5 text-PrimaryText">
                   <CiMail size={22} />
                 </div>
               </div>
-              {errors.emailAddress && (
-                <span className="mt-1">This field is required</span>
-              )}
             </div>
 
             {/* - */}
@@ -65,7 +71,11 @@ export default function Login() {
                 <input
                   placeholder="*********"
                   type={showPassword ? "text" : "password"}
-                  className="bg-white p-4 rounded-[12px] outline-0 w-full"
+                  className={`bg-white p-4 rounded-[12px] outline-0 w-full ${
+                    errors.password
+                      ? "border-2 border-yellow-500"
+                      : "border-2 border-transparent"
+                  }`}
                   {...register("password", { required: true })}
                 />
                 {
@@ -84,15 +94,15 @@ export default function Login() {
                   </div>
                 }
               </div>
-              {errors.password && (
-                <span className="mt-1">This field is required</span>
-              )}
             </div>
+            <Link to={"/auth/forget-password"} className="text-white flex justify-end duration-300 cursor-pointer hover:underline">
+              Forgot Password
+            </Link>
 
             <div className="flex justify-center my-6">
               <button
                 type="submit"
-                className="bg-white py-4 px-8  rounded-xl text-center w-fit cursor-pointer hover:bg-gray-100 duration-300"
+                className="bg-white py-4 px-8 font-semibold text-PrimaryBg rounded-xl text-center w-fit cursor-pointer hover:bg-gray-100 hover:scale-105 duration-300"
               >
                 Log in
               </button>
@@ -117,7 +127,7 @@ export default function Login() {
           </div>
 
           <div className="mt-4 text-white">
-            Didn’t have an account? <Link to={"/sign-up"}>Sign up</Link>
+            Didn’t have an account? <Link to={"/auth/select-your-role"}>Sign up</Link>
           </div>
         </div>
       </div>
