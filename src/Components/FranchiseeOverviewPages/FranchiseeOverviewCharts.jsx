@@ -32,8 +32,18 @@ export default function FranchiseeOverviewCharts() {
             <CustomBarChart />
           </div>
         )}
-        {activeTab === "Weekly" && <p>Showing Weekly Chart 📈</p>}
-        {activeTab === "Monthly" && <p>Showing Monthly Chart 📅</p>}
+        {activeTab === "Weekly" && (
+          <div className="flex items-center w-full gap-4">
+            <DailyTab />
+            <CustomBarChart />
+          </div>
+        )}
+        {activeTab === "Monthly" && (
+          <div className="flex items-center w-full gap-4">
+            <DailyTab />
+            <CustomBarChart />
+          </div>
+        )}
       </div>
     </main>
   );

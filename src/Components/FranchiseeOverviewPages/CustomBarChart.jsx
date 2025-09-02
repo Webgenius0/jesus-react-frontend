@@ -23,7 +23,7 @@ const CustomBarChart = () => {
   return (
     <div className="bg-white rounded-xl shadow-sm p-4 w-full ">
       <h2 className="text-black font-semibold mb-4 flex items-center">
-        Labor Perce
+        Labor Percentage
       </h2>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data} barCategoryGap={40}>

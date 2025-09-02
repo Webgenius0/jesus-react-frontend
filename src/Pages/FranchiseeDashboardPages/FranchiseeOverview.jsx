@@ -1,6 +1,7 @@
 import React from "react";
 import { DollarSign, Percent, Users, Star } from "lucide-react";
 import FranchiseeOverviewCharts from "@/Components/FranchiseeOverviewPages/FranchiseeOverviewCharts";
+import Component from "@/Components/FranchiseeOverviewPages/SalesDataUploadTable";
 
 const dashboardMetrics = [
   { id: 1, value: "$2165", label: "Today's Sale", Icon: DollarSign },
@@ -29,6 +30,7 @@ export default function FranchiseeOverview() {
         ))}
       </div>
       <FranchiseeOverviewCharts />
+      <Component/>
     </main>
   );
 }
