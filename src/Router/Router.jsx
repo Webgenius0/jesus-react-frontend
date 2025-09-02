@@ -15,6 +15,7 @@ import FranchiseeDashboardLayout from "@/Layout/FranchiseeDashboardLayout";
 import GeneralManagerDashboardLayout from "@/Layout/GeneralManagerDashboardLayout";
 import TrainerDashboardLayout from "@/Layout/TrainerDashboardLayout";
 import FranchiseeOverview from "./../Pages/FranchiseeDashboardPages/FranchiseeOverview";
+import OtpVerificationPages from "@/Pages/Authpages/OtpVerificationPages";
 
 export const router = createBrowserRouter([
   {
@@ -61,7 +62,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "otp-verification",
-        element: <OtpVerification />,
+        element: <OtpVerificationPages />,
       },
       {
         path: "forget-password",

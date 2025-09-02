@@ -23,7 +23,7 @@ export default function Login() {
   const onSubmit = (data) => {
     // console.log(data);
     toast.success("Successfully login In !");
-    navigate("/dashboard/overview");
+    navigate("/franchisee-dashboard/overview");
 
   };
 
