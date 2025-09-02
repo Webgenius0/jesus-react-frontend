@@ -26,11 +26,15 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path:"/all-pages",
-    element:<AllPages/>
+    path: "/all-pages",
+    element: <AllPages />,
   },
   {
     path: "/",
+    element: <Navigate to="/auth/login" replace />,
+  },
+  {
+    path: "/auth",
     element: <AuthLayout />,
     children: [
       {
@@ -38,27 +42,27 @@ export const router = createBrowserRouter([
         element: <Navigate to="login" replace />,
       },
       {
-        path: "/login",
+        path: "login",
         element: <Login />,
       },
       {
-        path: "/sign-up",
+        path: "sign-up",
         element: <SignUp />,
       },
       {
-        path: "/select-your-role",
+        path: "select-your-role",
         element: <SelectYourRole />,
       },
       {
-        path: "/forget-password",
+        path: "forget-password",
         element: <ForgetPassword />,
       },
       {
-        path: "/change-password",
+        path: "change-password",
         element: <ChangePassword />,
       },
       {
-        path: "/otp-verification",
+        path: "otp-verification",
         element: <OtpVerification />,
       },
       {

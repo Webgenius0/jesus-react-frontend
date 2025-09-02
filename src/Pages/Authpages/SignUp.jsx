@@ -46,17 +46,17 @@ export default function SignUp() {
                   <input
                     type="text"
                     placeholder="Enter your first name"
-                    className="bg-white p-4 rounded-[12px] outline-0 w-full ps-12"
+                    className={`bg-white p-4 rounded-[12px] outline-0 w-full ps-12 ${
+                      errors.firstName
+                        ? "border-2 border-yellow-500"
+                        : "border-2 border-transparent"
+                    }`}
                     {...register("firstName", { required: true })}
                   />
                   <h1 className="absolute left-4 top-4 text-PrimaryText">
                     <CiUser size={24} />
                   </h1>
                 </div>
-
-                {errors.firstName && (
-                  <span className="mt-1">This field is required</span>
-                )}
               </div>
 
               <div className="grid">
@@ -67,16 +67,17 @@ export default function SignUp() {
                   <input
                     type="text"
                     placeholder="Enter your last name"
-                    className="bg-white p-4 rounded-[12px] outline-0 w-full ps-12"
+                    className={`bg-white p-4 rounded-[12px] outline-0 w-full ps-12 ${
+                      errors.lastName
+                        ? "border-2 border-yellow-500"
+                        : "border-2 border-transparent"
+                    }`}
                     {...register("lastName", { required: true })}
                   />
                   <h1 className="absolute left-4 top-4 text-PrimaryText">
                     <CiUser size={24} />
                   </h1>
                 </div>
-                {errors.lastName && (
-                  <span className="mt-1">This field is required</span>
-                )}
               </div>
             </div>
 
@@ -89,16 +90,17 @@ export default function SignUp() {
                 <input
                   type="email"
                   placeholder="Enter your email address"
-                  className="bg-white p-4 rounded-[12px] outline-0 w-full ps-12"
+                  className={`bg-white p-4 rounded-[12px] outline-0 w-full ps-12 ${
+                    errors.emailAddress
+                      ? "border-2 border-yellow-500"
+                      : "border-2 border-transparent"
+                  }`}
                   {...register("emailAddress", { required: true })}
                 />
                 <div className="absolute left-4 top-4.5 text-PrimaryText">
                   <CiMail size={22} />
                 </div>
               </div>
-              {errors.emailAddress && (
-                <span className="mt-1">This field is required</span>
-              )}
             </div>
 
             {/* - */}
@@ -110,7 +112,11 @@ export default function SignUp() {
                 <input
                   placeholder="*********"
                   type={showPassword ? "text" : "password"}
-                  className="bg-white p-4 rounded-[12px] outline-0 w-full"
+                  className={`bg-white p-4 rounded-[12px] outline-0 w-full ${
+                    errors.password
+                      ? "border-2 border-yellow-500"
+                      : "border-2 border-transparent"
+                  }`}
                   {...register("password", { required: true })}
                 />
                 {
@@ -129,9 +135,6 @@ export default function SignUp() {
                   </div>
                 }
               </div>
-              {errors.password && (
-                <span className="mt-1">This field is required</span>
-              )}
             </div>
 
             {/* - */}
@@ -144,7 +147,11 @@ export default function SignUp() {
                 <input
                   placeholder="*********"
                   type={showConfirmPassword ? "text" : "password"}
-                  className="bg-white p-4 rounded-[12px] outline-0 w-full"
+                  className={`bg-white p-4 rounded-[12px] outline-0 w-full ${
+                    errors.confirmPassword
+                      ? "border-2 border-yellow-500"
+                      : "border-2 border-transparent"
+                  }`}
                   {...register("confirmPassword", { required: true })}
                 />
                 {
@@ -167,9 +174,6 @@ export default function SignUp() {
                   </div>
                 }
               </div>
-              {errors.confirmPassword && (
-                <span className="mt-1">This field is required</span>
-              )}
             </div>
 
             <div className="flex justify-center my-6">
@@ -200,7 +204,7 @@ export default function SignUp() {
           </div>
 
           <div className="mt-4 text-white">
-            Already have an account? <Link to={"/login"}>LogIn</Link>
+            Already have an account? <Link to={"/auth/login"}>LogIn</Link>
           </div>
         </div>
       </div>

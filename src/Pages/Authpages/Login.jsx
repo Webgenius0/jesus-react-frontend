@@ -2,7 +2,6 @@ import { AllImages } from "@/Components/Allimages/AllImages";
 import { Separator } from "@/Components/ui/separator";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { CiUser } from "react-icons/ci";
 import { CiMail } from "react-icons/ci";
 import { PiEyeThin } from "react-icons/pi";
 import { PiEyeSlashThin } from "react-icons/pi";
@@ -18,7 +17,6 @@ export default function Login() {
   } = useForm();
 
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const onSubmit = (data) => console.log(data);
 
@@ -44,16 +42,15 @@ export default function Login() {
                 <input
                   type="email"
                   placeholder="Enter your email address"
-                  className="bg-white p-4 rounded-[12px] outline-0 w-full ps-12"
+                  className={`bg-white p-4 rounded-[12px] outline-0 w-full ps-12 ${
+                    errors.emailAddress ? "border-2 border-yellow-500" : "border-2 border-transparent"
+                  }`}
                   {...register("emailAddress", { required: true })}
                 />
                 <div className="absolute left-4 top-4.5 text-PrimaryText">
                   <CiMail size={22} />
                 </div>
               </div>
-              {errors.emailAddress && (
-                <span className="mt-1">This field is required</span>
-              )}
             </div>
 
             {/* - */}
@@ -65,7 +62,9 @@ export default function Login() {
                 <input
                   placeholder="*********"
                   type={showPassword ? "text" : "password"}
-                  className="bg-white p-4 rounded-[12px] outline-0 w-full"
+                  className={`bg-white p-4 rounded-[12px] outline-0 w-full ${
+                    errors.password ? "border-2 border-yellow-500" : "border-2 border-transparent"
+                  }`}
                   {...register("password", { required: true })}
                 />
                 {
@@ -84,9 +83,6 @@ export default function Login() {
                   </div>
                 }
               </div>
-              {errors.password && (
-                <span className="mt-1">This field is required</span>
-              )}
             </div>
 
             <div className="flex justify-center my-6">
@@ -117,7 +113,7 @@ export default function Login() {
           </div>
 
           <div className="mt-4 text-white">
-            Didn’t have an account? <Link to={"/sign-up"}>Sign up</Link>
+            Didn’t have an account? <Link to={"/auth/sign-up"}>Sign up</Link>
           </div>
         </div>
       </div>
