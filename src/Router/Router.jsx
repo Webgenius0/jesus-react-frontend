@@ -1,5 +1,5 @@
 import AuthLayout from "@/Layout/AuthLayout";
-import DashboardLayout from "@/Layout/DashboardLayout";
+import DashboardLayout from "@/Layout/GeneralManagerDashboardLayout";
 import { createBrowserRouter, Link, Navigate } from "react-router-dom";
 import SignUp from "./../Pages/Authpages/SignUp";
 import Login from "@/Pages/Authpages/Login";
@@ -9,6 +9,13 @@ import ChangePassword from "@/Pages/Authpages/ChangePassword";
 import OtpVerification from "@/Pages/Authpages/OtpVerification";
 import YouVerified from "@/Pages/Authpages/YouVerified";
 import AllPages from "@/Pages/AllPages";
+import ForgetOtpVerification from "@/Pages/Authpages/forgetOtpVerification";
+import PasswordChangedSuccessfully from "@/Pages/Authpages/PasswordChangedSuccessfully";
+import FranchiseeDashboardLayout from "@/Layout/FranchiseeDashboardLayout";
+import GeneralManagerDashboardLayout from "@/Layout/GeneralManagerDashboardLayout";
+import TrainerDashboardLayout from "@/Layout/TrainerDashboardLayout";
+import FranchiseeOverview from "./../Pages/FranchiseeDashboardPages/FranchiseeOverview";
+import OtpVerificationPages from "@/Pages/Authpages/OtpVerificationPages";
 
 export const router = createBrowserRouter([
   {
@@ -26,11 +33,15 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path:"/all-pages",
-    element:<AllPages/>
+    path: "/all-pages",
+    element: <AllPages />,
   },
   {
     path: "/",
+    element: <Navigate to="/auth/login" replace />,
+  },
+  {
+    path: "/auth",
     element: <AuthLayout />,
     children: [
       {
@@ -38,42 +49,84 @@ export const router = createBrowserRouter([
         element: <Navigate to="login" replace />,
       },
       {
-        path: "/login",
+        path: "login",
         element: <Login />,
       },
       {
-        path: "/sign-up",
+        path: "sign-up",
         element: <SignUp />,
       },
       {
-        path: "/select-your-role",
+        path: "select-your-role",
         element: <SelectYourRole />,
       },
       {
-        path: "/forget-password",
+        path: "otp-verification",
+        element: <OtpVerificationPages />,
+      },
+      {
+        path: "forget-password",
         element: <ForgetPassword />,
       },
       {
-        path: "/change-password",
-        element: <ChangePassword />,
+        path: "forget-otp-verification",
+        element: <ForgetOtpVerification />,
       },
       {
-        path: "/otp-verification",
-        element: <OtpVerification />,
+        path: "change-password",
+        element: <ChangePassword />,
       },
       {
         path: "verified",
         element: <YouVerified />,
       },
+      {
+        path: "successfully",
+        element: <PasswordChangedSuccessfully />,
+      },
     ],
   },
   {
-    path: "/dashboard",
-    element: <DashboardLayout />,
+    path: "/franchisee-dashboard",
+    element: <FranchiseeDashboardLayout />,
     children: [
       {
-        path: "/dashboard",
-        element: <div>DashboardLayout</div>,
+        index: true,
+        element: <Navigate to="overview" replace />,
+      },
+      {
+        path: "overview",
+        element: <FranchiseeOverview />,
+      },
+    ],
+  },
+
+  {
+    path: "/general-manager-dashboard",
+    element: <GeneralManagerDashboardLayout />,
+    children: [
+      {
+        index: true,
+        element: <Navigate to="overview" replace />,
+      },
+      {
+        path: "overview",
+        element: <div>GeneralManagerDashboardLayout</div>,
+      },
+    ],
+  },
+  
+  {
+    path: "/trainer-dashboard",
+    element: <TrainerDashboardLayout />,
+    children: [
+      {
+        index: true,
+        element: <Navigate to="overview" replace />,
+      },
+      {
+        path: "overview",
+        element: <div>TrainerDashboardLayout</div>,
       },
     ],
   },

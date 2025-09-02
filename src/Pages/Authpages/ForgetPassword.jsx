@@ -1,14 +1,10 @@
 import { AllImages } from "@/Components/Allimages/AllImages";
-import { Separator } from "@/Components/ui/separator";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { CiUser } from "react-icons/ci";
+
 import { CiMail } from "react-icons/ci";
-import { PiEyeThin } from "react-icons/pi";
-import { PiEyeSlashThin } from "react-icons/pi";
-import { FaGoogle } from "react-icons/fa";
-import { SiApple } from "react-icons/si";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 export default function ForgetPassword() {
   const {
@@ -16,11 +12,17 @@ export default function ForgetPassword() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data)
+
+    navigate("/auth/forget-otp-verification");
+
+  };
 
   return (
-    <main className="bg-PrimaryBg min-h-screen relative z-1 after:absolute after:top-0 after:left-0 after:w-full after:h-[50vh] after:bg-white after:-z-1 py-[30px]">
+    <main className="bg-PrimaryBg min-h-screen relative z-1 after:absolute after:top-0 after:left-0 after:w-full after:h-[60vh] after:bg-white after:-z-1 py-[30px] flex flex-col justify-center items-center">
       <div className="max-w-[719px] mx-auto">
         <div className="flex flex-col justify-center items-center">
           <img src={AllImages.Logo} className="w-[280px] h-[88px]" alt="" />
@@ -41,16 +43,18 @@ export default function ForgetPassword() {
                 <input
                   type="email"
                   placeholder="johndoe@gmail.com"
-                  className="bg-white p-4 rounded-[12px] outline-0 w-full ps-12"
+                  className={`bg-white p-4 rounded-[12px] outline-0 w-full ps-12 ${
+                    errors.emailAddress
+                      ? "border-2 border-yellow-500"
+                      : "border-2 border-transparent"
+                  }`}
                   {...register("emailAddress", { required: true })}
                 />
                 <div className="absolute left-4 top-4.5 text-PrimaryText">
                   <CiMail size={22} />
                 </div>
               </div>
-              {errors.emailAddress && (
-                <span className="mt-1">This field is required</span>
-              )}
+            
             </div>
 
             <div className="flex justify-center my-6">
