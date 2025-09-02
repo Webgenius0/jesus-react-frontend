@@ -8,7 +8,8 @@ import { PiEyeThin } from "react-icons/pi";
 import { PiEyeSlashThin } from "react-icons/pi";
 import { FaGoogle } from "react-icons/fa";
 import { SiApple } from "react-icons/si";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function SignUp() {
   const {
@@ -19,11 +20,16 @@ export default function SignUp() {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    // console.log(data);
+    toast.success("Successfully Signed Up!");
+    navigate("/auth/otp-verification");
+  };
 
   return (
-    <main className="bg-PrimaryBg min-h-screen relative z-1 after:absolute after:top-0 after:left-0 after:w-full after:h-[50vh] after:bg-white after:-z-1 py-[30px]">
+    <main className="bg-PrimaryBg min-h-screen relative z-1 after:absolute after:top-0 after:left-0 after:w-full after:h-[50vh] after:bg-white after:-z-1 py-[30px] flex flex-col justify-center items-center">
       <div className="max-w-[719px] mx-auto">
         <div className="flex flex-col justify-center items-center">
           <img src={AllImages.Logo} className="w-[280px] h-[88px]" alt="" />
@@ -179,7 +185,7 @@ export default function SignUp() {
             <div className="flex justify-center my-6">
               <button
                 type="submit"
-                className="bg-white py-4 px-8  rounded-xl text-center w-fit cursor-pointer hover:bg-gray-100 duration-300"
+                className="bg-white py-4 px-12 hover:scale-105 duration-300 rounded-xl text-center w-fit cursor-pointer hover:bg-gray-100 font-semibold text-PrimaryBg"
               >
                 Sign Up
               </button>

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { PiEyeThin } from "react-icons/pi";
 import { PiEyeSlashThin } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 
 export default function ChangePassword() {
   const {
@@ -10,14 +11,19 @@ export default function ChangePassword() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    navigate("/auth/successfully");
+
+  };
 
   return (
-    <main className="bg-PrimaryBg min-h-screen relative z-1 after:absolute after:top-0 after:left-0 after:w-full after:h-[50vh] after:bg-white after:-z-1 py-[30px]">
+    <main className="bg-PrimaryBg min-h-screen relative z-1 after:absolute after:top-0 after:left-0 after:w-full after:h-[60vh] after:bg-white after:-z-1 py-[30px] flex flex-col justify-center items-center">
       <div className="max-w-[719px] mx-auto">
         <div className="flex flex-col justify-center items-center">
           <img src={AllImages.Logo} className="w-[280px] h-[88px]" alt="" />
@@ -39,7 +45,11 @@ export default function ChangePassword() {
                 <input
                   placeholder="*********"
                   type={showPassword ? "text" : "password"}
-                  className="bg-white p-4 rounded-[12px] outline-0 w-full"
+                  className={`bg-white p-4 rounded-[12px] outline-0 w-full  ${
+                    errors.password
+                      ? "border-2 border-yellow-500"
+                      : "border-2 border-transparent"
+                  }`}
                   {...register("password", { required: true })}
                 />
                 {
@@ -58,9 +68,6 @@ export default function ChangePassword() {
                   </div>
                 }
               </div>
-              {errors.password && (
-                <span className="mt-1">This field is required</span>
-              )}
             </div>
 
             {/* - */}
@@ -73,7 +80,11 @@ export default function ChangePassword() {
                 <input
                   placeholder="*********"
                   type={showConfirmPassword ? "text" : "password"}
-                  className="bg-white p-4 rounded-[12px] outline-0 w-full"
+                  className={`bg-white p-4 rounded-[12px] outline-0 w-full  ${
+                    errors.confirmPassword
+                      ? "border-2 border-yellow-500"
+                      : "border-2 border-transparent"
+                  }`}
                   {...register("confirmPassword", { required: true })}
                 />
                 {
@@ -96,9 +107,6 @@ export default function ChangePassword() {
                   </div>
                 }
               </div>
-              {errors.confirmPassword && (
-                <span className="mt-1">This field is required</span>
-              )}
             </div>
 
             <div className="flex justify-center my-6">

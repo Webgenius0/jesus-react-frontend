@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-export default function OtpVerification() {
+export default function ForgetOtpVerification() {
   const { handleSubmit } = useForm();
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ export default function OtpVerification() {
     // If valid OTP
     toast.success("OTP verified successfully!");
     console.log("Entered OTP:", otp);
-    navigate("/auth/verified");
+    navigate("/auth/change-password");
   };
 
   return (
@@ -59,7 +59,10 @@ export default function OtpVerification() {
               >
                 Verify Now
               </button>
-              <button type="button" className="text-base text-white cursor-pointer">
+              <button
+                type="button"
+                className="text-base text-white cursor-pointer"
+              >
                 Resend Code (60sec)
               </button>
             </div>

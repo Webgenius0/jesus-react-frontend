@@ -9,6 +9,8 @@ import ChangePassword from "@/Pages/Authpages/ChangePassword";
 import OtpVerification from "@/Pages/Authpages/OtpVerification";
 import YouVerified from "@/Pages/Authpages/YouVerified";
 import AllPages from "@/Pages/AllPages";
+import ForgetOtpVerification from "@/Pages/Authpages/forgetOtpVerification";
+import PasswordChangedSuccessfully from "@/Pages/Authpages/PasswordChangedSuccessfully";
 
 export const router = createBrowserRouter([
   {
@@ -54,20 +56,28 @@ export const router = createBrowserRouter([
         element: <SelectYourRole />,
       },
       {
+        path: "otp-verification",
+        element: <OtpVerification />,
+      },
+      {
         path: "forget-password",
         element: <ForgetPassword />,
+      },
+      {
+        path: "forget-otp-verification",
+        element: <ForgetOtpVerification />,
       },
       {
         path: "change-password",
         element: <ChangePassword />,
       },
       {
-        path: "otp-verification",
-        element: <OtpVerification />,
-      },
-      {
         path: "verified",
         element: <YouVerified />,
+      },
+      {
+        path: "successfully",
+        element: <PasswordChangedSuccessfully />,
       },
     ],
   },
@@ -76,7 +86,11 @@ export const router = createBrowserRouter([
     element: <DashboardLayout />,
     children: [
       {
-        path: "/dashboard",
+        index: true,
+        element: <Navigate to="overview" replace />,
+      },
+      {
+        path: "overview",
         element: <div>DashboardLayout</div>,
       },
     ],
