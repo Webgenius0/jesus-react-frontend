@@ -1,5 +1,5 @@
 import AuthLayout from "@/Layout/AuthLayout";
-import DashboardLayout from "@/Layout/DashboardLayout";
+import DashboardLayout from "@/Layout/GeneralManagerDashboardLayout";
 import { createBrowserRouter, Link, Navigate } from "react-router-dom";
 import SignUp from "./../Pages/Authpages/SignUp";
 import Login from "@/Pages/Authpages/Login";
@@ -11,6 +11,10 @@ import YouVerified from "@/Pages/Authpages/YouVerified";
 import AllPages from "@/Pages/AllPages";
 import ForgetOtpVerification from "@/Pages/Authpages/forgetOtpVerification";
 import PasswordChangedSuccessfully from "@/Pages/Authpages/PasswordChangedSuccessfully";
+import FranchiseeDashboardLayout from "@/Layout/FranchiseeDashboardLayout";
+import GeneralManagerDashboardLayout from "@/Layout/GeneralManagerDashboardLayout";
+import TrainerDashboardLayout from "@/Layout/TrainerDashboardLayout";
+import FranchiseeOverview from "./../Pages/FranchiseeDashboardPages/FranchiseeOverview";
 
 export const router = createBrowserRouter([
   {
@@ -82,8 +86,8 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/dashboard",
-    element: <DashboardLayout />,
+    path: "/franchisee-dashboard",
+    element: <FranchiseeDashboardLayout />,
     children: [
       {
         index: true,
@@ -91,7 +95,37 @@ export const router = createBrowserRouter([
       },
       {
         path: "overview",
-        element: <div>DashboardLayout</div>,
+        element: <FranchiseeOverview />,
+      },
+    ],
+  },
+
+  {
+    path: "/general-manager-dashboard",
+    element: <GeneralManagerDashboardLayout />,
+    children: [
+      {
+        index: true,
+        element: <Navigate to="overview" replace />,
+      },
+      {
+        path: "overview",
+        element: <div>GeneralManagerDashboardLayout</div>,
+      },
+    ],
+  },
+  
+  {
+    path: "/trainer-dashboard",
+    element: <TrainerDashboardLayout />,
+    children: [
+      {
+        index: true,
+        element: <Navigate to="overview" replace />,
+      },
+      {
+        path: "overview",
+        element: <div>TrainerDashboardLayout</div>,
       },
     ],
   },
