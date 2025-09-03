@@ -36,9 +36,7 @@ export default function AllProducts() {
 
   const handleCategoryChange = (name) => {
     setSelectedCategories((prev) =>
-      prev.includes(name)
-        ? prev.filter((c) => c !== name)
-        : [...prev, name]
+      prev.includes(name) ? prev.filter((c) => c !== name) : [...prev, name]
     );
   };
 
@@ -51,79 +49,77 @@ export default function AllProducts() {
         );
 
   return (
-    <main>
-      <div className="grid grid-cols-12 gap-6">
-        {/* Sidebar */}
-        <div className="col-span-2 p-6 rounded-xl bg-white">
-          <h1 className="font-semibold text-2xl mb-4">Category</h1>
-          <div className="flex flex-col gap-4 flex-wrap">
-            {category.map(({ name, label }) => (
-              <div key={name} className="flex items-center gap-2">
-                <Checkbox
-                  id={name}
-                  checked={selectedCategories.includes(name)}
-                  onCheckedChange={() => handleCategoryChange(name)}
-                  className="cursor-pointer"
-                />
-                <label
-                  htmlFor={name}
-                  className="text-lg leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
-                >
-                  {label}
-                </label>
-              </div>
-            ))}
-          </div>
+    <main className="flex gap-6 ">
+      {/* Sidebar */}
+      <div className="w-1/6 rounded-xl bg-white sticky top-6 self-start p-6">
+        <h1 className="font-semibold text-2xl mb-4">Category</h1>
+        <div className="flex flex-col gap-4">
+          {category.map(({ name, label }) => (
+            <div key={name} className="flex items-center gap-2">
+              <Checkbox
+                id={name}
+                checked={selectedCategories.includes(name)}
+                onCheckedChange={() => handleCategoryChange(name)}
+                className="cursor-pointer"
+              />
+              <label
+                htmlFor={name}
+                className="text-lg leading-none cursor-pointer"
+              >
+                {label}
+              </label>
+            </div>
+          ))}
         </div>
+      </div>
 
-        {/* Products */}
-        <div className="col-span-10">
-          <div className="grid grid-cols-4 gap-4">
-            {filteredProducts.map((item) => {
-              const quantity = quantities[item.id] || 1;
-              return (
-                <div key={item.id}>
-                  <img
-                    src={item.image}
-                    className="w-full object-contain rounded-t-2xl"
-                    alt=""
-                  />
-                  <div className="bg-white rounded-b-2xl p-4">
-                    <h1 className="text-lg font-medium mb-2">{item.name}</h1>
-                    <p className="text-lg font-bold">{item.price}</p>
-                    <div className="mt-2 flex justify-between items-center">
-                      <div className="flex items-center space-x-2">
-                        <button
-                          onClick={() => decreaseQuantity(item.id)}
-                          className="w-10 h-10 flex items-center justify-center border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
-                          disabled={quantity <= 1}
-                        >
-                          <span className="text-lg font-medium">−</span>
-                        </button>
+      {/* Products */}
+      <div className="w-5/6">
+        <div className="grid grid-cols-4 gap-4">
+          {filteredProducts.map((item) => {
+            const quantity = quantities[item.id] || 1;
+            return (
+              <div key={item.id}>
+                <img
+                  src={item.image}
+                  className="w-full object-contain rounded-t-2xl"
+                  alt=""
+                />
+                <div className="bg-white rounded-b-2xl p-4">
+                  <h1 className="text-lg font-medium mb-2">{item.name}</h1>
+                  <p className="text-lg font-bold">{item.price}</p>
+                  <div className="mt-2 flex justify-between items-center">
+                    <div className="flex items-center space-x-2">
+                      <button
+                        onClick={() => decreaseQuantity(item.id)}
+                        className="w-10 h-10 flex items-center justify-center border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled={quantity <= 1}
+                      >
+                        <span className="text-lg font-medium">−</span>
+                      </button>
 
-                        <input
-                          type="text"
-                          value={quantity}
-                          onChange={(e) => handleInputChange(item.id, e)}
-                          className="w-12 h-10 text-center border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
+                      <input
+                        type="text"
+                        value={quantity}
+                        onChange={(e) => handleInputChange(item.id, e)}
+                        className="w-12 h-10 text-center border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
 
-                        <button
-                          onClick={() => increaseQuantity(item.id)}
-                          className="w-10 h-10 flex items-center justify-center border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        >
-                          <span className="text-lg font-medium">+</span>
-                        </button>
-                      </div>
-                      <button className="bg-black hover:bg-black/80 text-white py-2 px-4 rounded-lg cursor-pointer">
-                        Add to Cart
+                      <button
+                        onClick={() => increaseQuantity(item.id)}
+                        className="w-10 h-10 flex items-center justify-center border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      >
+                        <span className="text-lg font-medium">+</span>
                       </button>
                     </div>
+                    <button className="bg-black hover:bg-black/80 text-white py-2 px-4 rounded-lg cursor-pointer">
+                      Add to Cart
+                    </button>
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </main>
