@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-export default function ForgetOtpVerification() {
+export default function ForgetOtpVerificationPages() {
   const { handleSubmit } = useForm();
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();

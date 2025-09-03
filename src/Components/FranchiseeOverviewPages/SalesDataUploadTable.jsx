@@ -7,25 +7,15 @@ import {
   getPaginationRowModel,
   flexRender,
 } from "@tanstack/react-table";
-import { Button } from "@/components/ui/button";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Edit, Trash2, Download } from "lucide-react";
 
-export default function SalesDataTable() {
+import EditSVG from "../Svg/FranchiseeDashboardSVG/EditSVG";
+import DeleteSVG from "../Svg/FranchiseeDashboardSVG/DeleteSVG";
+import DownloadSVG from "../Svg/FranchiseeDashboardSVG/DownloadSVG";
+import { Button } from "../ui/button";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+
+export default function SalesDataUploadTable() {
   const [data, setData] = useState([]);
   const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 5 });
 
@@ -86,16 +76,16 @@ export default function SalesDataTable() {
       id: "action",
       header: "Action",
       cell: ({ row }) => (
-        <div className="flex gap-2">
-          <Button size="icon" variant="outline">
-            <Edit size={16} />
-          </Button>
-          <Button size="icon" variant="outline">
-            <Trash2 size={16} />
-          </Button>
-          <Button size="icon" variant="outline">
-            <Download size={16} />
-          </Button>
+        <div className="flex gap-4">
+          <button className="cursor-pointer" size="icon" variant="outline">
+            <EditSVG size={16} />
+          </button>
+          <button className="cursor-pointer" size="icon" variant="outline">
+            <DeleteSVG size={16} />
+          </button>
+          <button className="cursor-pointer" size="icon" variant="outline">
+            <DownloadSVG size={16} />
+          </button>
         </div>
       ),
     },
@@ -173,7 +163,7 @@ export default function SalesDataTable() {
             value={pagination.pageSize.toString()}
             onValueChange={(value) => table.setPageSize(Number(value))}
           >
-            <SelectTrigger className="w-fit">
+            <SelectTrigger className="w-fit cursor-pointer">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -199,12 +189,14 @@ export default function SalesDataTable() {
           <Button
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage?.()}
+            className={"cursor-pointer"}
           >
             {"<"}
           </Button>
           <Button
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage?.()}
+            className={"cursor-pointer"}
           >
             {">"}
           </Button>
