@@ -6,9 +6,9 @@ import React from "react";
 export default function StaffReports() {
   return (
     <div className="space-y-12">
-      <StaffReportsTopSection />
+      {/* <StaffReportsTopSection />
       <StaffReportsStaffData />
-      <StaffReportsBottomSectionTab/>
+      <StaffReportsBottomSectionTab/> */}
     </div>
   );
 }
