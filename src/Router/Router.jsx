@@ -6,7 +6,6 @@ import Login from "@/Pages/Authpages/Login";
 import SelectYourRole from "@/Pages/Authpages/SelectYourRole";
 import ForgetPassword from "@/Pages/Authpages/ForgetPassword";
 import ChangePassword from "@/Pages/Authpages/ChangePassword";
-import OtpVerification from "@/Pages/Authpages/OtpVerification";
 import YouVerified from "@/Pages/Authpages/YouVerified";
 import AllPages from "@/Pages/AllPages";
 import ForgetOtpVerification from "@/Pages/Authpages/forgetOtpVerification";
@@ -16,6 +15,8 @@ import GeneralManagerDashboardLayout from "@/Layout/GeneralManagerDashboardLayou
 import TrainerDashboardLayout from "@/Layout/TrainerDashboardLayout";
 import FranchiseeOverview from "./../Pages/FranchiseeDashboardPages/FranchiseeOverview";
 import OtpVerificationPages from "@/Pages/Authpages/OtpVerificationPages";
+import AllProducts from "@/Pages/FranchiseeDashboardPages/AllProducts";
+import Cart from "@/Pages/FranchiseeDashboardPages/Cart";
 
 export const router = createBrowserRouter([
   {
@@ -98,6 +99,14 @@ export const router = createBrowserRouter([
         path: "overview",
         element: <FranchiseeOverview />,
       },
+      {
+        path: "all-products",
+        element: <AllProducts />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
+      },
     ],
   },
 
@@ -115,7 +124,7 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  
+
   {
     path: "/trainer-dashboard",
     element: <TrainerDashboardLayout />,
