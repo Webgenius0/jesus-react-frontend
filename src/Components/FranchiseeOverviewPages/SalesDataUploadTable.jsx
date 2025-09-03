@@ -7,25 +7,13 @@ import {
   getPaginationRowModel,
   flexRender,
 } from "@tanstack/react-table";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+
 import EditSVG from "../Svg/FranchiseeDashboardSVG/EditSVG";
 import DeleteSVG from "../Svg/FranchiseeDashboardSVG/DeleteSVG";
 import DownloadSVG from "../Svg/FranchiseeDashboardSVG/DownloadSVG";
 import { Button } from "../ui/button";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
 export default function SalesDataUploadTable() {
   const [data, setData] = useState([]);
