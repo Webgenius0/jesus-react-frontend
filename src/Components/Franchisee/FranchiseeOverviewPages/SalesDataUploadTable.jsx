@@ -8,12 +8,13 @@ import {
   flexRender,
 } from "@tanstack/react-table";
 
-import EditSVG from "../Svg/FranchiseeDashboardSVG/EditSVG";
-import DeleteSVG from "../Svg/FranchiseeDashboardSVG/DeleteSVG";
-import DownloadSVG from "../Svg/FranchiseeDashboardSVG/DownloadSVG";
-import { Button } from "../ui/button";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/Components/ui/table";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/Components/ui/select";
+import EditSVG from "@/Components/Svg/FranchiseeDashboardSVG/EditSVG";
+import DeleteSVG from "@/Components/Svg/FranchiseeDashboardSVG/DeleteSVG";
+import DownloadSVG from "@/Components/Svg/FranchiseeDashboardSVG/DownloadSVG";
+import { Button } from "@/Components/ui/button";
 
 export default function SalesDataUploadTable() {
   const [data, setData] = useState([]);

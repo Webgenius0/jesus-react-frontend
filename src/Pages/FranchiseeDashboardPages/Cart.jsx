@@ -6,7 +6,7 @@ import React, { useState, useMemo } from "react";
 export default function Cart() {
   const { CartList } = useGetCartList();
 
-  // keep local copy so we can delete items
+ 
   const [cartItems, setCartItems] = useState(CartList || []);
   const [quantities, setQuantities] = useState({});
 
@@ -34,7 +34,6 @@ export default function Cart() {
     }
   };
 
-  // ✅ Delete item from local cart
   const handleDelete = (id) => {
     setCartItems((prev) => prev.filter((item) => item.id !== id));
     setQuantities((prev) => {
@@ -44,15 +43,14 @@ export default function Cart() {
     });
   };
 
-  // ✅ Calculate order summary dynamically
   const { subtotal, shipping, tax, total } = useMemo(() => {
     const subtotal = cartItems.reduce((acc, item) => {
       const qty = quantities[item.id] || item.quantity || 1;
       return acc + item.price * qty;
     }, 0);
 
-    const shipping = subtotal > 0 ? 9.9 : 0; // fixed shipping example
-    const tax = subtotal * 0.08; // 8% tax example
+    const shipping = subtotal > 0 ? 9.9 : 0;
+    const tax = subtotal * 0.08;
     const total = subtotal + shipping + tax;
 
     return { subtotal, shipping, tax, total };
