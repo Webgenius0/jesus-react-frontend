@@ -1,7 +1,9 @@
 import React from "react";
 import { DollarSign, Percent, Users, Star } from "lucide-react";
-import FranchiseeOverviewCharts from "@/Components/FranchiseeOverviewPages/FranchiseeOverviewCharts";
-import SalesDataUploadTable from "@/Components/FranchiseeOverviewPages/SalesDataUploadTable";
+
+
+import FranchiseeOverviewCharts from "@/Components/Franchisee/FranchiseeOverviewPages/FranchiseeOverviewCharts";
+import SalesDataUploadTable from "@/Components/Franchisee/FranchiseeOverviewPages/SalesDataUploadTable";
 
 const dashboardMetrics = [
   { id: 1, value: "$2165", label: "Today's Sale", Icon: DollarSign },

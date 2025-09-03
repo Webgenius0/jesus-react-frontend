@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import DailyTab from "./DailyTab";
+
 import CustomBarChart from "./CustomBarChart";
+import DailyTab from "./DailyTab";
+
 
 export default function FranchiseeOverviewCharts() {
   const [activeTab, setActiveTab] = useState("Daily");
