@@ -17,6 +17,7 @@ import OtpVerificationPages from "@/Pages/Authpages/OtpVerificationPages";
 import AllProducts from "@/Pages/FranchiseeDashboardPages/AllProducts";
 import Cart from "@/Pages/FranchiseeDashboardPages/Cart";
 import ForgetOtpVerificationPages from "@/Pages/Authpages/ForgetOtpVerificationPages";
+import StaffReports from "@/Pages/FranchiseeDashboardPages/StaffReports";
 
 export const router = createBrowserRouter([
   {
@@ -106,6 +107,10 @@ export const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart />,
+      },
+      {
+        path: "staff-reports",
+        element: <StaffReports />,
       },
     ],
   },
