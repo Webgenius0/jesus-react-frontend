@@ -5,7 +5,7 @@ import { DollarSign, Percent, Users, Star } from "lucide-react";
 import FranchiseeOverviewCharts from "@/Components/Franchisee/FranchiseeOverviewPages/FranchiseeOverviewCharts";
 import SalesDataUploadTable from "@/Components/Franchisee/FranchiseeOverviewPages/SalesDataUploadTable";
 
-const dashboardMetrics = [
+const overviewMetrics = [
   { id: 1, value: "$2165", label: "Today's Sale", Icon: DollarSign },
   { id: 2, value: "24%", label: "Labor Percentage", Icon: Percent },
   { id: 3, value: 32, label: "Active Staff", Icon: Users },
@@ -16,7 +16,7 @@ export default function FranchiseeOverview() {
   return (
     <main className="space-y-8">
       <div className="grid lg:grid-cols-4 gap-4">
-        {dashboardMetrics.map(({ id, value, label, Icon }) => (
+        {overviewMetrics.map(({ id, value, label, Icon }) => (
           <div
             key={id}
             className="p-6 rounded-lg  bg-white flex flex-col  gap-4"
