@@ -38,6 +38,18 @@ const AllPages = () => {
       link: "/franchisee-dashboard/overview",
       element: "Franchisee Dashboard Overview",
     },
+    {
+      link: "/franchisee-dashboard/all-products",
+      element: "All products",
+    },
+    {
+      link: "/franchisee-dashboard/cart",
+      element: "cart",
+    },
+    {
+      link: "/franchisee-dashboard/staff-reports",
+      element: "Staff reports",
+    },
   ];
 
   return (
