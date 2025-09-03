@@ -25,7 +25,6 @@ import {
 } from "@/Components/ui/select";
 import EditSVG from "@/Components/Svg/FranchiseeDashboardSVG/EditSVG";
 import DeleteSVG from "@/Components/Svg/FranchiseeDashboardSVG/DeleteSVG";
-import DownloadSVG from "@/Components/Svg/FranchiseeDashboardSVG/DownloadSVG";
 import { Button } from "@/Components/ui/button";
 
 export default function StaffReportsStaffData() {
