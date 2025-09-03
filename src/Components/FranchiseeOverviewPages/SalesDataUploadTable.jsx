@@ -7,7 +7,6 @@ import {
   getPaginationRowModel,
   flexRender,
 } from "@tanstack/react-table";
-import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -23,10 +22,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Edit, Trash2, Download } from "lucide-react";
 import EditSVG from "../Svg/FranchiseeDashboardSVG/EditSVG";
 import DeleteSVG from "../Svg/FranchiseeDashboardSVG/DeleteSVG";
 import DownloadSVG from "../Svg/FranchiseeDashboardSVG/DownloadSVG";
+import { Button } from "../ui/button";
 
 export default function SalesDataUploadTable() {
   const [data, setData] = useState([]);
