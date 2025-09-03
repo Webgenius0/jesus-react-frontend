@@ -8,7 +8,6 @@ import ForgetPassword from "@/Pages/Authpages/ForgetPassword";
 import ChangePassword from "@/Pages/Authpages/ChangePassword";
 import YouVerified from "@/Pages/Authpages/YouVerified";
 import AllPages from "@/Pages/AllPages";
-import ForgetOtpVerification from "@/Pages/Authpages/forgetOtpVerification";
 import PasswordChangedSuccessfully from "@/Pages/Authpages/PasswordChangedSuccessfully";
 import FranchiseeDashboardLayout from "@/Layout/FranchiseeDashboardLayout";
 import GeneralManagerDashboardLayout from "@/Layout/GeneralManagerDashboardLayout";
@@ -17,6 +16,7 @@ import FranchiseeOverview from "./../Pages/FranchiseeDashboardPages/FranchiseeOv
 import OtpVerificationPages from "@/Pages/Authpages/OtpVerificationPages";
 import AllProducts from "@/Pages/FranchiseeDashboardPages/AllProducts";
 import Cart from "@/Pages/FranchiseeDashboardPages/Cart";
+import ForgetOtpVerificationPages from "@/Pages/Authpages/ForgetOtpVerificationPages";
 
 export const router = createBrowserRouter([
   {
@@ -71,7 +71,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "forget-otp-verification",
-        element: <ForgetOtpVerification />,
+        element: <ForgetOtpVerificationPages />,
       },
       {
         path: "change-password",
