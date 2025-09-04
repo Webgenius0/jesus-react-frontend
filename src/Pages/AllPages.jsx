@@ -50,6 +50,14 @@ const AllPages = () => {
       link: "/franchisee-dashboard/staff-reports",
       element: "Staff reports",
     },
+    {
+      link: "/franchisee-dashboard/royalty-payments",
+      element: "Royalty Payments",
+    },
+    {
+      link: "/franchisee-dashboard/build-out-tracker",
+      element: "Build Out Tracker",
+    },
   ];
 
   return (
