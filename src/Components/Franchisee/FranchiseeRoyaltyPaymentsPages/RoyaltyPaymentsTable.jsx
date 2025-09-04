@@ -100,8 +100,36 @@ export default function RoyaltyPaymentsTable() {
     { accessorKey: "dateIssued", header: "Date Issued" },
     { accessorKey: "dueDate", header: "Due Issued" },
     { accessorKey: "amount", header: "Amount" },
-    { accessorKey: "status", header: "Status" },
-    { accessorKey: "paymentMethod", header: "Payment method" },
+    {
+      accessorKey: "status",
+      header: "Status",
+      cell: ({ row }) => (
+        <div className="flex gap-4">
+          <button
+            className={`cursor-pointer ${
+              row.original.status === "Unpaid"
+                ? "bg-[#FEE2E2] text-[#991B1B] py-2 px-4 rounded-2xl w-32"
+                : "bg-[#DCFCE7] text-[#166534] py-2 px-4 rounded-2xl w-32"
+            }`}
+            size="icon"
+            variant="outline"
+          >
+            {row.original.status}
+          </button>
+        </div>
+      ),
+    },
+    {
+      accessorKey: "paymentMethod",
+      header: "Payment method",
+      cell: ({ row }) => (
+        <div className="flex gap-4">
+          <button className="cursor-pointer" size="icon" variant="outline">
+            <ReceipSVG />
+          </button>
+        </div>
+      ),
+    },
     {
       accessorKey: "receipt",
       header: "Receipt",
@@ -118,7 +146,11 @@ export default function RoyaltyPaymentsTable() {
       header: "Action",
       cell: ({ row }) => (
         <div className="flex gap-4">
-          <button className="cursor-pointer bg-PrimaryBg text-white py-2 px-4 rounded-2xl" size="icon" variant="outline">
+          <button
+            className="cursor-pointer bg-PrimaryBg text-white py-2 px-4 rounded-2xl"
+            size="icon"
+            variant="outline"
+          >
             Pay now
           </button>
         </div>

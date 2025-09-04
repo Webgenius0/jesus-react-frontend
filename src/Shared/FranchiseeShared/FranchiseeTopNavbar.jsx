@@ -3,12 +3,26 @@ import CartSVG from "@/Components/Svg/TopNavbar/CartSVG";
 import NotificationSVG from "@/Components/Svg/TopNavbar/NotificationSVG";
 import React from "react";
 import { CiSearch } from "react-icons/ci";
+import { useLocation } from "react-router-dom";
 
 export default function FranchiseeTopNavbar() {
+  const location = useLocation();
+
+  const titles = {
+    "/franchisee-dashboard/overview": "Overview",
+    "/franchisee-dashboard/all-products": "Product Hub",
+    "/franchisee-dashboard/cart": "Cart",
+    "/franchisee-dashboard/staff-reports": "Staff Reports",
+    "/franchisee-dashboard/royalty-Payments": "Royalty & Payments",
+    "/franchisee-dashboard/build-out-tracker": "Staff Reports",
+  };
+
+  const title = titles[location.pathname] || "Dashboard";
+
   return (
     <div className="flex justify-between items-center gap-4">
       <div className="w-full">
-        <h1 className="text-[32px] font-black">Dashboard</h1>
+        <h1 className="text-[32px] font-black">{title}</h1>
       </div>
       <div className="relative w-full">
         <input
@@ -28,7 +42,7 @@ export default function FranchiseeTopNavbar() {
         </div>
         <div className="flex items-center gap-6">
           <img src={AllImages.Avatar} alt="" />
-          <div className="">
+          <div>
             <h1>Jane</h1>
             <p className="text-sm text-gray-500">Franchisee</p>
           </div>

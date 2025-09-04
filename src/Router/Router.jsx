@@ -19,6 +19,8 @@ import Cart from "@/Pages/FranchiseeDashboardPages/Cart";
 import ForgetOtpVerificationPages from "@/Pages/Authpages/ForgetOtpVerificationPages";
 import StaffReports from "@/Pages/FranchiseeDashboardPages/StaffReports";
 import RoyaltyPayments from "@/Pages/FranchiseeDashboardPages/RoyaltyPayments";
+import BuildOutTracker from "@/Pages/FranchiseeDashboardPages/BuildOutTracker";
+import FranchiseeSettings from "@/Pages/FranchiseeDashboardPages/FranchiseeSettings";
 
 export const router = createBrowserRouter([
   {
@@ -116,6 +118,14 @@ export const router = createBrowserRouter([
       {
         path: "royalty-Payments",
         element: <RoyaltyPayments />,
+      },
+      {
+        path: "build-out-tracker",
+        element: <BuildOutTracker />,
+      },
+      {
+        path: "settings",
+        element: <FranchiseeSettings />,
       },
     ],
   },

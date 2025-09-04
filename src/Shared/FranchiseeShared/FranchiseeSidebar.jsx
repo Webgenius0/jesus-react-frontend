@@ -37,8 +37,8 @@ export const NavItems = [
     Icon: RoyalitySVG,
   },
   {
-    to: "/franchisee-dashboard/buildout",
-    label: "Buildout Tracker",
+    to: "/franchisee-dashboard/build-out-tracker",
+    label: "Build-out Tracker",
     Icon: BuildoutSVG,
   },
   {
