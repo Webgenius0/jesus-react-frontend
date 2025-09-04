@@ -32,7 +32,7 @@ export const NavItems = [
     Icon: StaffReportsSVG,
   },
   {
-    to: "/franchisee-dashboard/royalty-Payments",
+    to: "/franchisee-dashboard/royalty-payments",
     label: "Royalty & Payments",
     Icon: RoyalitySVG,
   },

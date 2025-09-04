@@ -116,16 +116,16 @@ export const router = createBrowserRouter([
         element: <StaffReports />,
       },
       {
-        path: "royalty-Payments",
+        path: "royalty-payments",
         element: <RoyaltyPayments />,
       },
       {
         path: "build-out-tracker",
-        element: <BuildOutTracker />,
+        // element: <BuildOutTracker />,
       },
       {
         path: "settings",
-        element: <FranchiseeSettings />,
+        // element: <FranchiseeSettings />,
       },
     ],
   },

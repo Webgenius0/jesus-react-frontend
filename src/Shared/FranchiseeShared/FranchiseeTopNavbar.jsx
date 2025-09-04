@@ -13,7 +13,7 @@ export default function FranchiseeTopNavbar() {
     "/franchisee-dashboard/all-products": "Product Hub",
     "/franchisee-dashboard/cart": "Cart",
     "/franchisee-dashboard/staff-reports": "Staff Reports",
-    "/franchisee-dashboard/royalty-Payments": "Royalty & Payments",
+    "/franchisee-dashboard/royalty-payments": "Royalty & Payments",
     "/franchisee-dashboard/build-out-tracker": "Staff Reports",
   };
 
