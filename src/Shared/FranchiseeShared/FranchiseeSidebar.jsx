@@ -32,13 +32,13 @@ export const NavItems = [
     Icon: StaffReportsSVG,
   },
   {
-    to: "/franchisee-dashboard/royalty",
+    to: "/franchisee-dashboard/royalty-Payments",
     label: "Royalty & Payments",
     Icon: RoyalitySVG,
   },
   {
-    to: "/franchisee-dashboard/buildout",
-    label: "Buildout Tracker",
+    to: "/franchisee-dashboard/build-out-tracker",
+    label: "Build-out Tracker",
     Icon: BuildoutSVG,
   },
   {
