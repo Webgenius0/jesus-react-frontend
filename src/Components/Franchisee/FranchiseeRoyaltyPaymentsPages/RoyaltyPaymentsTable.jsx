@@ -122,13 +122,6 @@ export default function RoyaltyPaymentsTable() {
     {
       accessorKey: "paymentMethod",
       header: "Payment method",
-      cell: ({ row }) => (
-        <div className="flex gap-4">
-          <button className="cursor-pointer" size="icon" variant="outline">
-            <ReceipSVG />
-          </button>
-        </div>
-      ),
     },
     {
       accessorKey: "receipt",
