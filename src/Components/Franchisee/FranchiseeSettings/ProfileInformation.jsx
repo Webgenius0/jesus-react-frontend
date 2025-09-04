@@ -50,6 +50,13 @@ export default function ProfileInformation() {
     { label: "Location", key: "location", icon: MapPinIcon },
     { label: "Franchise Status", key: "franchiseStatus", icon: ShieldCheckIcon },
   ];
+  const profileFields2 = [
+    { label: "First Name", key: "firstName", icon: UserIcon },
+    { label: "Last Name", key: "lastName", icon: UserIcon },
+    { label: "Email Address", key: "emailAddress", icon: MailIcon },
+    { label: "Phone Number", key: "phoneNumber", icon: PhoneIcon },
+    { label: "Location", key: "location", icon: MapPinIcon },
+  ];
 
   return (
     <div className="bg-white p-6 rounded-2xl relative">
@@ -87,7 +94,7 @@ export default function ProfileInformation() {
             <h2 className="text-xl font-semibold mb-4 text-center">Edit Information</h2>
 
             <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 gap-4">
-              {profileFields.map((field, idx) => {
+              {profileFields2.map((field, idx) => {
                 const Icon = field.icon;
                 return (
                   <div key={idx} className="flex flex-col gap-1">
