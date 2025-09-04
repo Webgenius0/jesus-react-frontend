@@ -152,7 +152,7 @@ export default function BuildOutTracker() {
               {vendors.map((item) => (
                 <div
                   onClick={() => setSelectedVendor(item)}
-                  className="flex items-center gap-4 bg-white p-4 border rounded-2xl "
+                  className="flex items-center gap-4 bg-white p-4 border rounded-2xl cursor-pointer"
                 >
                   <img
                     src={item.avatar}
